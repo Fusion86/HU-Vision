@@ -1,0 +1,8 @@
+# PYthon stuff
+__pycache__/
+*.py[cod]
+.pytest_cache
+
+# Project stuff
+.vscode/*
+!.vscode/launch.json

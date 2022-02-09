@@ -18,6 +18,14 @@
             "program": "${workspaceFolder}/assignments/KleurenHistogrammenFeatures/src/main.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}/assignments/KleurenHistogrammenFeatures"
+        },
+        {
+            "name": "ClassificatieSegmentatieObjectRecognition",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/assignments/ClassificatieSegmentatieObjectRecognition/src/main.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/assignments/ClassificatieSegmentatieObjectRecognition"
         }
     ]
 }

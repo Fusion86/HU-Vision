@@ -18,11 +18,11 @@ if __name__ == "__main__":
             # RGB range is 0..255
             pix = image_gray[y, x]
             r, g, b = pix[0], pix[1], pix[2]
-            # HSB range is 0..1
+            # HSV range is 0..1
             # I'm going to assume that we are allowed to use the rgb2hsv function.
             h, s, v = rgb2hsv(pix)
 
-            # Only show red/orange colors and grayscale the rest.
+            # Only show yellow colors and grayscale the rest.
             # Number based on guesswork.
             if h < min_h or h > max_h:
                 # Based on https://en.wikipedia.org/wiki/Grayscale

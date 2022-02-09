@@ -26,6 +26,14 @@
             "program": "${workspaceFolder}/assignments/ClassificatieSegmentatieObjectRecognition/src/main.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}/assignments/ClassificatieSegmentatieObjectRecognition"
+        },
+        {
+            "name": "Convoluties",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/assignments/Convoluties/src/main.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/assignments/Convoluties"
         }
     ]
 }

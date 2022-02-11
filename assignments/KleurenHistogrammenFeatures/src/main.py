@@ -12,6 +12,8 @@ if __name__ == "__main__":
     min_h = 24 / 360
     max_h = 45 / 360
 
+    hue = rgb2hsv(image)[:, :, 0]
+
     print("This is going to take a while...")
     for y in range(image_gray.shape[0]):
         for x in range(image_gray.shape[1]):
@@ -19,8 +21,7 @@ if __name__ == "__main__":
             pix = image_gray[y, x]
             r, g, b = pix[0], pix[1], pix[2]
             # HSV range is 0..1
-            # I'm going to assume that we are allowed to use the rgb2hsv function.
-            h, s, v = rgb2hsv(pix)
+            h = hue[y,x]
 
             # Only show yellow colors and grayscale the rest.
             # Number based on guesswork.

@@ -34,6 +34,14 @@
             "program": "${workspaceFolder}/assignments/Convoluties/src/main.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}/assignments/Convoluties"
+        },
+        {
+            "name": "MappingLinAlg AffineTransform",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/assignments/MappingLinAlg/affine.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/assignments/MappingLinAlg"
         }
     ]
 }

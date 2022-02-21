@@ -4,9 +4,28 @@ import matplotlib.pyplot as plt
 from skimage import data, transform, io
 from skimage import img_as_float
 
+
+def rotationMatrix(angle):
+    return np.array(
+        [
+            [np.cos(angle), -np.sin(angle), 0],
+            [np.sin(angle), np.cos(angle), 0],
+            [0, 0, 1],
+        ]
+    )
+
+
 if __name__ == "__main__":
     image = io.imread("zorse.jpg")
     img = img_as_float(image)
+    w, h = img.shape[:2]
+
+    # Matrix spec
+    # [i,0,x]
+    # [0,i,y]
+    # [0,0,i]
+    # i = scale x,y. 1 -> don't scale (identity)
+    # x,y = translate in px. 0 -> don't translate
 
     # Copied from docs:
     # Now let’s apply this transformation to an image.
@@ -15,22 +34,24 @@ if __name__ == "__main__":
     # Therefore, we need to use the inverse of tform, rather than tform directly.
 
     # Move and rotate
-    tform_tlrot = transform.EuclideanTransform(
-        rotation=np.pi / 12.0, translation=(100, -20)
+    matrix_tl = np.array(
+        [
+            [1, 0, 70],
+            [0, 1, -150],
+            [0, 0, 1],
+        ]
     )
+    matrix_rot = rotationMatrix(np.pi / 6)
+    matrix = np.dot(matrix_rot, matrix_tl)
+
+    tform_tlrot = transform.AffineTransform(matrix=matrix)
     tf_img = transform.warp(img, tform_tlrot.inverse)
 
-    # Affine/shear
+    # Shear
     tform_shear = transform.AffineTransform(shear=np.pi / 6)
     tf_img_shear = transform.warp(img, tform_shear.inverse)
 
     # Stretch + center vertically
-    # [i,0,x]
-    # [0,i,y]
-    # [0,0,i]
-    # i = scale. 1 -> don't scale (identity)
-    # x,y = translate in px. 0 -> don't translate
-    w, h = img.shape[:2]
     matrix = np.array(
         [
             [1, 0, 0],
@@ -38,7 +59,7 @@ if __name__ == "__main__":
             [0, 0, 1],
         ]
     )
-    tform = transform.ProjectiveTransform(matrix=matrix)
+    tform = transform.AffineTransform(matrix=matrix)
     tf_img_stretch = transform.warp(img, tform.inverse)
 
     # Combined
